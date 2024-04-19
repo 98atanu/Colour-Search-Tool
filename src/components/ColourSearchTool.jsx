@@ -118,7 +118,7 @@ const ColourSearchTool = () => {
           onKeyPress={handleKeyPress}
         />
         <button
-          className="ml-6 px-2 py-1 bg-zinc-600 rounded-md text-white font-semibold  "
+          className="ml-6 px-2 py-1 bg-zinc-600 rounded-md text-white font-semibold hidden sm:inline-block"
           onClick={() => handleSearch(searchInput.toLowerCase())}
         >
           Search
@@ -131,7 +131,7 @@ const ColourSearchTool = () => {
             API Failed!!! Please try again!!!
           </p>
           <button
-            className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold hidden sm:inline-block "
+            className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold "
             onClick={fetchColors}
           >
             Retry
