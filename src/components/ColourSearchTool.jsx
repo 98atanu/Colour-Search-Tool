@@ -4,7 +4,6 @@ import axios from "axios";
 import convert from "color-convert";
 import ColourCard from "./ColourCard";
 
-
 const ColourSearchTool = () => {
   const [colors, setColors] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -51,7 +50,6 @@ const ColourSearchTool = () => {
   };
 
   const calculateColorSimilarity = (color1, color2) => {
-    
     const rDiff = color1[0] - color2[0];
     const gDiff = color1[1] - color2[1];
     const bDiff = color1[2] - color2[2];
@@ -63,18 +61,20 @@ const ColourSearchTool = () => {
 
     let inputColorObject;
     if (isValidHexColor(query)) {
-      inputColorObject = convert.hex.rgb(query); // Convert hex to RGB
+      inputColorObject = convert.hex.rgb(query); 
     } else if (isValidRGBColor(query)) {
-      inputColorObject = query.split(',').map(val => parseInt(val.trim()));
+      inputColorObject = query.split(",").map((val) => parseInt(val.trim()));
     } else {
       setSearchResults([]);
-      setErrorMessage("Invalid color. Please enter a valid hex color or RGB values separated by commas!!");
+      setErrorMessage(
+        "Invalid color. Please enter a valid hex color or RGB values separated by commas!!"
+      );
       return;
     }
-  
+
     setSearchedQuery(query);
     setErrorMessage("");
-  
+
     const sortedColors = colors
       .map((color) => ({
         ...color,
@@ -126,11 +126,15 @@ const ColourSearchTool = () => {
       </div>
 
       {isAPIFailed && (
-        <div className=" mb-10" >
-          <p className="text-3xl font-semibold mb-3 text-red-600">API Failed!!! Please try again!!!</p>
-        
-          <button className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold" onClick={fetchColors}>
-          Retry
+        <div className=" mb-10">
+          <p className="text-3xl font-semibold mb-3 text-red-600">
+            API Failed!!! Please try again!!!
+          </p>
+          <button
+            className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold"
+            onClick={fetchColors}
+          >
+            Retry
           </button>
         </div>
       )}
@@ -141,8 +145,7 @@ const ColourSearchTool = () => {
         <p className="text-red-600 font-semibold">{errorMessage}</p>
       ) : (
         <div>
-          {!isLoading && !isAPIFailed && errorMessage.length === 0 &&
-             (
+          {!isLoading && !isAPIFailed && errorMessage.length === 0 && (
             <div>
               {searchedQuery.length > 0 ? (
                 <h2 className="text-sm">Searched for ' {searchedQuery} '</h2>
@@ -151,7 +154,7 @@ const ColourSearchTool = () => {
               )}
               <table className="lg:w-[60vw] w-full">
                 <thead>
-                  <tr>
+                  <tr className="text-xl">
                     <th className="pl-7 text-left">Name</th>
                     <th className="text-left">Hex</th>
                     <th className="text-left">RGB</th>
@@ -165,8 +168,8 @@ const ColourSearchTool = () => {
                           key={index}
                           color={item.color}
                           hex={item.hex}
-                          rgb ={item.rgb}
-                          hsl = {item.hsl}
+                          rgb={item.rgb}
+                          hsl={item.hsl}
                         />
                       ))
                     : colors.map((item, index) => (

@@ -10,10 +10,9 @@ const ColourCard = ({ color, hex }) => {
     backgroundColor: `${hex}`,
   };
 
-
   return (
-    <tr className=' overflow-auto text-sm  mb-4'>
-     <td className='flex'><span className="inline-block w-5 h-5 rounded-md mr-2" style={colorStyle}></span><h1>{color}</h1></td>
+    <tr className=' overflow-auto text-sm  mb-4 font-semibold'>
+     <td className='flex'><span className="inline-block w-5 h-5 rounded-sm mr-2" style={colorStyle}></span><h1>{color}</h1></td>
     <td>{hex}</td>
     <td>{`${rgb.join(', ')}`}</td>
     <td>{`${hsl.join(', ')}`}</td>
@@ -21,4 +20,4 @@ const ColourCard = ({ color, hex }) => {
   )
 }
 
-export default ColourCard
+export default ColourCard;
