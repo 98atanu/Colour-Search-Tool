@@ -131,7 +131,7 @@ const ColourSearchTool = () => {
             API Failed!!! Please try again!!!
           </p>
           <button
-            className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold hidden sm:inline-block"
+            className="bg-red-500 px-3 py-1 rounded-md text-white font-semibold hidden sm:inline-block "
             onClick={fetchColors}
           >
             Retry
